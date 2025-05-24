@@ -1,0 +1,6 @@
+OAuth Flow:
+
+[User] → [SaaS App] → [Stripe OAuth] → [Token Exchange] → [DB Store] → [Webhook Listener]
+
+- Handles user authentication and account linking
+- Listens for Stripe account status updates

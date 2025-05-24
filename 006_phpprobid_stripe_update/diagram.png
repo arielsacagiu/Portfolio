@@ -1,0 +1,6 @@
+Payment Flow:
+
+[User] → [PHPProBid] → [Stripe Payment Intent] → [Webhook Listener] → [Payment Status Update]
+
+- Handles payment creation, status updates, and error handling
+- Ensures compliance with latest Stripe API

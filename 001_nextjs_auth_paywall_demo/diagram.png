@@ -1,0 +1,10 @@
+Paywall Auth Flow:
+
+[User] → [Login Page] → [Session Check] → [Stripe Payment Check] → [Premium Content]
+
+- If session invalid: redirect to login
+- If payment not found: redirect to subscribe
+- If both valid: serve content
+
+(Diagram: Next.js API route checks session, then Stripe, then serves content)
+

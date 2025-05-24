@@ -1,0 +1,8 @@
+CertTracker System Architecture:
+
+[Certificate Upload] → [Express API] → [PostgreSQL DB]
+    ↓                ↘ [Google Sheets Backup]
+[QuickBooks API]     ↘ [React Dashboard]
+[Printavo Webhook]   ↘ [Email Reminder Service]
+
+- Tracks expirations, automates reminders, syncs with accounting

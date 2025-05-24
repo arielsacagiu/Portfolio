@@ -1,0 +1,6 @@
+Order Automation Flow:
+
+[Webflow Order] → [Make.com Scenario] → [Google Sheets] + [Stripe Payment Status]
+
+- Syncs order and payment data
+- Handles errors and notifications

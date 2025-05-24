@@ -1,0 +1,4 @@
+Stripe → [Order Extractor Script] → [CSV Mapper] → [CSV File] → [Starshipit Import]
+
+- Handles data mapping, formatting, and error logging
+- Automates end-to-end order transfer

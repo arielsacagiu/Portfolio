@@ -1,0 +1,8 @@
+Bubble.io JSON Email Flow:
+
+[Bubble.io Form] → [Plugin] → [Python Script: build_payload()] → [Gmail API] → [Recipient]
+
+- Handles dynamic form data
+- Validates and transforms to JSON
+- Sends via email with retry logic
+
