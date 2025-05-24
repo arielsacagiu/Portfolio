@@ -1,23 +1,38 @@
 # snippet.py
-# Redacted: JSON payload builder for Bubble.io
-import json
+# Bubble.io → Email: Robust JSON payload builder and email sender
+import json, logging, time
 
-def build_payload(form_data):
-    # Validate required fields
-    if "customer" not in form_data or "order" not in form_data:
-        raise ValueError("Missing required fields")
-    payload = {
-        "customer": form_data["customer"],
-        "order": form_data["order"]
-    }
-    return json.dumps(payload, indent=2)
+# Config
+MAX_RETRIES = 3
 
-def send_email(recipient, payload):
-    # ...email sending logic with retry...
+# Main entry: Build and send JSON payload via email
+def process_form(form_data, recipient):
     try:
-        # send email
-        pass
-    except Exception as e:
-        # log and retry
-        pass
+        payload = build_payload(form_data)
+        send_email_with_retry(recipient, payload)
+    except (ValueError, EmailSendError) as e:
+        logging.error(f"Form processing failed: {e}")
+        raise
 
+# Helper: Validate and build JSON
+def build_payload(form_data):
+    if not form_data.get("customer") or not form_data.get("order"):
+        raise ValueError("Missing required fields: customer/order")
+    return json.dumps({"customer": form_data["customer"], "order": form_data["order"]}, indent=2)
+
+# Helper: Email send with retry/backoff
+def send_email_with_retry(recipient, payload):
+    for attempt in range(1, MAX_RETRIES+1):
+        try:
+            # Simulate real email send (replace with actual API)
+            if not recipient or "@" not in recipient:
+                raise EmailSendError("Invalid recipient email")
+            # ...email sending logic...
+            return
+        except Exception as e:
+            logging.warning(f"Email send failed (attempt {attempt}): {e}")
+            if attempt == MAX_RETRIES:
+                raise EmailSendError("Email delivery failed after retries")
+            time.sleep(2 ** attempt)
+
+class EmailSendError(Exception): pass

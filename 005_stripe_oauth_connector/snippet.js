@@ -1,22 +1,29 @@
 // snippet.js
-// Redacted: Stripe OAuth callback handler
+// Stripe OAuth: Secure callback handler with modular error handling
 app.get('/stripe/callback', async (req, res) => {
   const { code } = req.query;
-  // Exchange code for access token
-  let account;
+  if (!code) return res.status(400).json({ error: 'Missing OAuth code' });
   try {
-    account = await stripe.oauth.token({ grant_type: 'authorization_code', code });
-    // Store account.id and tokens securely
-    await saveAccountToDB(account.stripe_user_id, account.access_token, account.refresh_token);
-  } catch (e) {
-    // Handle token exchange errors
-    return res.status(400).json({ error: 'OAuth failed', details: e.message });
+    const account = await stripe.oauth.token({ grant_type: 'authorization_code', code });
+    await saveAccount(account.stripe_user_id, account.access_token, account.refresh_token);
+    // Optionally trigger webhook sync here
+    return res.redirect('/dashboard');
+  } catch (err) {
+    logError('OAuth failed', err);
+    return res.status(400).json({ error: 'OAuth failed', details: err.message });
   }
-  // Listen for webhook events
-  // ...webhook logic...
-  res.redirect('/dashboard');
 });
 
-async function saveAccountToDB(userId, accessToken, refreshToken) {
-  // ...secure DB storage logic...
+// Helper: Save account details with error awareness
+async function saveAccount(userId, accessToken, refreshToken) {
+  try {
+    // ...secure DB storage logic...
+  } catch (err) {
+    logError('DB save failed', err);
+    throw new Error('Account storage error');
+  }
+}
+
+function logError(context, err) {
+  console.error(`[${context}]`, err.message || err);
 }
