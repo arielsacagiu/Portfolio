@@ -2,7 +2,7 @@
 Real client work: Stripe integrations, API automation, backend logic, workflow fixes. Built fast, built right.
 
 
-# 🧠 Ariel Sacagiu – Systems-Focused Developer Portfolio
+# Ariel Sacagiu – Systems-Focused Developer Portfolio
 
 Welcome to my curated portfolio of technical projects—each designed to solve real client problems through automation, API integration, and operational reliability. From Stripe OAuth flows to full-stack certificate management systems, this collection reflects my approach: **from brief to build, I make your tools talk**.
 
