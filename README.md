@@ -22,7 +22,7 @@ Welcome to my curated portfolio of technical projects—each designed to solve r
 
 ---
 
-## 🛠 Skills Demonstrated
+## Skills Demonstrated
 - API Integration (Stripe, QuickBooks, Google)
 - Backend Engineering (Node.js, Express, PostgreSQL)
 - Automation Design (Zapier, Make.com, custom scripts)
@@ -32,7 +32,7 @@ Welcome to my curated portfolio of technical projects—each designed to solve r
 
 ---
 
-## 📎 About Me
+## About Me
 
 I'm a systems-minded engineer who bridges messy specs and scalable tools. Whether building from scratch or fixing broken workflows, I focus on **clarity, automation, and reliability**.
 
@@ -40,7 +40,7 @@ I'm a systems-minded engineer who bridges messy specs and scalable tools. Whethe
 
 ---
 
-## 🔍 Tips for Reviewers
+## Tips for Reviewers
 
 Each project folder contains:
 - `README.md` – Project context, outcome, takeaway
